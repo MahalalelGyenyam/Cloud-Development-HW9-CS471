@@ -20,7 +20,7 @@ public class GettingStartedApplication {
     private static final int LENGTH = 10;
     private static final SecureRandom RANDOM = new SecureRandom();
 
-    public static String getRandomString() {
+    public String getRandomString() {
         StringBuilder sb = new StringBuilder(LENGTH);
         for (int i = 0; i < LENGTH; i++) {
             int idx = RANDOM.nextInt(ALPHABET.length());
@@ -49,7 +49,7 @@ public class GettingStartedApplication {
             final var resultSet = statement.executeQuery("SELECT tick, random_string FROM table_timestamp_and_random_string");
             final var output = new ArrayList<>();
             while (resultSet.next()) {
-                output.add("Read from DB: " + resultSet.getTimestamp("tick"));
+                output.add("Read from DB: " + resultSet.getTimestamp("tick")+", " + resultSet.getString("random_string"));
             }
 
             model.put("records", output);
